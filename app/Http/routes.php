@@ -43,3 +43,16 @@ Route::get('/user/{id}/post/{post_id}',function($id,$post_id){
     return $user->posts()->where('id',$post_id)->get();
 });
 
+//get update by user id and post id
+Route::get('/user/{id}/up_post/{post_id}',function($id,$post_id){
+
+    $user   =   User::findOrFail($id);
+    return $user->posts()->whereId($post_id)->update(['title'=>'Update title','body'=>'Update body title']);
+});
+
+Route::get('/user/{id}/del_post/{post_id}',function($id,$post_id){
+    $user   =   User::findOrFail($id);
+    return $user->posts()->whereId($post_id)->delete();
+});
+
+
