@@ -1,4 +1,6 @@
 <?php
+use App\User;
+use App\Model\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +15,11 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/user/{id}/posts',function($id){
+
+    //return User::findOrFail($id)->posts;
+    $user   =    User::findOrFail($id);
+    return $user->posts;
 });
